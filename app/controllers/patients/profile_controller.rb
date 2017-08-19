@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController
+class Patients::ProfileController < PatientsController
   before_action :authenticate_user!
 
   def show
