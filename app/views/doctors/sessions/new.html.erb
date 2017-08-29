@@ -1,0 +1,19 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+  <legend>Sign In</legend>
+  <div class="form-group">
+    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+  </div>
+  <div class="form-group">
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+  </div>
+  <% if devise_mapping.rememberable? -%>
+    <div class="form-check">
+      <label class="form-check-label">
+        <%= f.check_box :remember_me, class: 'form-check-input' %>
+        Remember me
+      </label>
+    </div>
+  <% end -%>
+  <%= f.submit "Sign in", class: 'btn btn-primary ' %>
+  <%= render "devise/shared/links" %>
+<% end %>

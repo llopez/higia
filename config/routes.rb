@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'patients/profile' => 'patients/profile#show', as: :profile
-  get 'doctors/patients' => 'doctors/patients#index', as: :patients
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :doctors, controllers: {
+    registrations: 'doctors/registrations',
+    sessions: 'doctors/sessions',
+    passwords: 'doctors/passwords'
+  }
+
+  devise_for :patients, controllers: {
+    registrations: 'patients/registrations',
+    sessions: 'patients/sessions',
+    passwords: 'patients/passwords'
+  }
 end
