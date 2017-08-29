@@ -1,7 +1,24 @@
-<h2>Sign up</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-signup'}) do |f| %>
-  <%= devise_error_messages! %>
+  <legend>Sign Up</legend>
+
+
+  <%- if resource.errors.any? %>
+
+  <div class="form-group">
+  <div class="card">
+    <div class="card-header bg-danger text-white">
+      <%= resource.errors.count %> errros prohibited this user from being saved
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <%- resource.errors.each do |field, error| %>
+            <li class="list-group-item"><%= field %> <%= error%></li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>
+  <% end %>
 
   <div class="form-group">
     <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
