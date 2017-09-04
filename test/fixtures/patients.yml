@@ -1,0 +1,12 @@
+one:
+  id: 3
+  email: 'tom@higia.com'
+  encrypted_password: $2a$11$/k7EDnQRyAwSPMzxL.B.CeV3P4BvkinnIIdOVNgEzd8jNi3BWgYhK
+  type: 'Patient'
+
+with_token:
+  id: 4
+  email: 'paul@higia.com'
+  encrypted_password: $2a$11$/k7EDnQRyAwSPMzxL.B.CeV3P4BvkinnIIdOVNgEzd8jNi3BWgYhK
+  type: 'Patient'
+  reset_password_token: b625116982b1383106adae02fe4b7cc258e17a4e62dbe162f1b34ebe40e0f3b9
