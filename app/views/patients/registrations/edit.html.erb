@@ -10,8 +10,7 @@
           <ul class="list-group list-group-flush">
             <%- resource.errors.each do |field, error| %>
               <li class="list-group-item">
-                <%= field %>
-                  <%= error%>
+                <%= field %> <%= error%>
               </li>
               <% end %>
           </ul>
