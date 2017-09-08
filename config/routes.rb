@@ -11,5 +11,9 @@ Rails.application.routes.draw do
     registrations: 'patients/registrations',
     sessions: 'patients/sessions',
     passwords: 'patients/passwords'
-  }
+  } 
+
+  devise_scope :patient do
+    root to: 'patients/sessions#new'
+  end
 end
