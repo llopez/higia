@@ -1,0 +1,22 @@
+.card-header
+  Forgot Password
+.card-body
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-signup' }) do |f|
+    - if resource.errors.any?
+      .form-group
+        .card
+          .card-header.bg-danger.text-white
+            = resource.errors.count
+            errros prohibited this form from being sent
+          .card-body
+            %ul.list-group.list-group-flush
+              - resource.errors.each do |field, error|
+                %li.list-group-item
+                  = "#{field} #{error}"
+    .form-group
+      = f.label :email, class: 'label'
+      = f.email_field :email, autofocus: true, class: 'form-control'
+    .form-group
+      = f.submit "Reset Password", class: 'btn btn-primary'
+    .form-group.float-right
+      = render "devise/shared/links"

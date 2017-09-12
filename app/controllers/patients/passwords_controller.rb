@@ -1,4 +1,5 @@
 class Patients::PasswordsController < Devise::PasswordsController
+  layout 'box'
   protected
 
   def after_resetting_password_path_for(resource)
