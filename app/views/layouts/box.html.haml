@@ -1,0 +1,22 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %link{:href => "favicon.ico", :rel => "icon"}/
+    %title Higia
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %body
+    .container
+      - flash.each do |k, v|
+        %div{:class => "alert flash-#{k}", :role => "alert"}
+          = v
+      .row.justify-content-center
+        .col-md-6
+          .card
+            = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
