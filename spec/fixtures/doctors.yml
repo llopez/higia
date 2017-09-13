@@ -1,0 +1,13 @@
+one:
+  id: 1
+  email: 'mike@higia.com'
+  license_number: 1234
+  encrypted_password: $2a$11$/k7EDnQRyAwSPMzxL.B.CeV3P4BvkinnIIdOVNgEzd8jNi3BWgYhK
+  type: 'Doctor'
+
+two:
+  id: 2
+  email: 'john@higia.com'
+  license_number: 1235
+  encrypted_password: $2a$11$/k7EDnQRyAwSPMzxL.B.CeV3P4BvkinnIIdOVNgEzd8jNi3BWgYhK
+  type: 'Doctor'
