@@ -1,0 +1,20 @@
+.card
+  .card-header
+    New Appointment
+  .card-body
+    = form_for @appointment, url: doctors_appointments_path do |f|
+      - if f.object.errors.any?
+        .form-group
+          .card
+            .card-header.bg-danger.text-white
+              = f.object.errors.count
+              errros prohibited this appointment from being saved
+            .card-body
+              %ul.list-group.list-group-flush
+                - f.object.errors.each do |field, error|
+                  %li.list-group-item
+                    = "#{field} #{error}"
+      .form-group
+        = f.datetime_field :date, autofocus: true, class: 'form-control'
+      .form-group
+        = f.submit "Create Appointment", class: 'btn btn-primary'

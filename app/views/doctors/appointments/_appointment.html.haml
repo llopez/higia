@@ -1,0 +1,7 @@
+%tr
+  %td= appointment.id
+  %td= appointment.date
+  %td
+    - if appointment.patient.present?
+      = link_to "cancel", cancel_doctors_appointment_path(appointment), method: 'patch', class: 'btn btn-sm btn-warning'
+    = link_to "remove", doctors_appointment_path(appointment), method: 'delete', data: { confirm: 'are you sure?'}, class: 'btn btn-sm btn-danger'

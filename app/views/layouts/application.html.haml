@@ -21,7 +21,15 @@
             %a.nav-link.dropdown-toggle(data-toggle="dropdown")
               = current_user.email
             .dropdown-menu
-              = link_to "Profile", edit_patient_registration_path, class: 'dropdown-item'
+              - if current_user.instance_of?(Patient)
+                = link_to "My Profile", edit_patient_registration_path, class: 'dropdown-item'
+                = link_to "Doctors", patients_doctors_path, class: 'dropdown-item'
+              - else
+                = link_to "My Profile", edit_doctor_registration_path, class: 'dropdown-item'
+                .dropdown-divider  
+                = link_to "Appointments", doctors_appointments_path , class: 'dropdown-item'
+                = link_to "New Appointment", new_doctors_appointment_path , class: 'dropdown-item'
+              .dropdown-divider  
               = link_to "Sign Out", destroy_user_session_path, method: 'delete', class: 'dropdown-item'
     .container
       - flash.each do |k, v|

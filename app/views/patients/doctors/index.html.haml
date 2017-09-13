@@ -1,0 +1,16 @@
+.card
+  .card-header
+    List of Doctors
+  .card-body
+    %table.table.table-small
+      %thead
+        %tr
+          %th #
+          %th Email
+          %th
+      %tbody
+        - @doctors.each do |doctor|
+          %tr
+            %td= doctor.id
+            %td= doctor.email
+            %td= link_to 'View', patients_doctor_path(doctor)

@@ -16,4 +16,15 @@ Rails.application.routes.draw do
   devise_scope :patient do
     root to: 'patients/sessions#new'
   end
+
+  get 'patients/doctors' => 'patients/doctors#index', as: :patients_doctors
+  get 'patients/doctors/:id' => 'patients/doctors#show', as: :patients_doctor
+  patch 'patients/appointments/:id/book' => 'patients/appointments#book', as: :book_patients_appointment
+  patch 'patients/appointments/:id/cancel' => 'patients/appointments#cancel', as: :cancel_patients_appointment
+
+  get 'doctors/appointments' => 'doctors/appointments#index', as: :doctors_appointments
+  patch 'doctors/appointments/:id/cancel' => 'doctors/appointments#cancel', as: :cancel_doctors_appointment
+  post 'doctors/appointments' => 'doctors/appointments#create'
+  get 'doctors/appointments/new' => 'doctors/appointments#new', as: :new_doctors_appointment
+  delete 'doctors/appointments/:id' => 'doctors/appointments#destroy', as: :doctors_appointment
 end
