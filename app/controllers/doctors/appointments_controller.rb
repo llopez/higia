@@ -1,4 +1,6 @@
 class Doctors::AppointmentsController < DoctorsController
+  before_action :authenticate_doctor!
+  
   def index
     @appointments = current_doctor.appointments
   end

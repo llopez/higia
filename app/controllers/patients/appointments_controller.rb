@@ -1,4 +1,6 @@
 class Patients::AppointmentsController < PatientsController
+  before_action :authenticate_patient!
+
   def book
     @appointment = Appointment.find params[:id]
     if @appointment.update_attribute(:patient, current_patient)

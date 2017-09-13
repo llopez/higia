@@ -1,4 +1,6 @@
 class Patients::DoctorsController < PatientsController
+  before_action :authenticate_patient!
+
   def index
     @doctors = Doctor.all
   end
