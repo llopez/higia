@@ -1,0 +1,22 @@
+%nav.navbar.navbar-expand-md.mb-4
+  %a.navbar-brand
+    %h2 Higia
+  .collapse.navbar-collapse
+    %ul.navbar-nav.ml-auto
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle(data-toggle="dropdown")
+          Turnos
+        .dropdown-menu
+          - if current_user.instance_of?(Patient)
+            = link_to "Mis Turnos", patients_appointments_path, class: 'dropdown-item'
+            = link_to "Buscador de Turnos", patients_appointments_searcher_path, class: 'dropdown-item'
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle(data-toggle="dropdown")
+          = current_user.email
+        .dropdown-menu
+          - if current_user.instance_of?(Patient)
+            = link_to "My Profile", edit_patient_registration_path, class: 'dropdown-item'
+          - else
+            = link_to "My Profile", edit_doctor_registration_path, class: 'dropdown-item'
+          .dropdown-divider  
+          = link_to "Sign Out", destroy_user_session_path, method: 'delete', class: 'dropdown-item'

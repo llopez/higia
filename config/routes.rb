@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   patch 'patients/appointments/:id/book' => 'patients/appointments#book', as: :book_patients_appointment
   patch 'patients/appointments/:id/cancel' => 'patients/appointments#cancel', as: :cancel_patients_appointment
 
+  get 'patients/appointments' => 'patients/appointments#index', as: :patients_appointments
+
+
+  get 'patients/appointments_searcher' => 'patients/appointments_searcher#index', as: :patients_appointments_searcher
+  
   get 'doctors/appointments' => 'doctors/appointments#index', as: :doctors_appointments
   patch 'doctors/appointments/:id/cancel' => 'doctors/appointments#cancel', as: :cancel_doctors_appointment
   post 'doctors/appointments' => 'doctors/appointments#create'

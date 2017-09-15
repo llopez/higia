@@ -1,6 +1,6 @@
 %tr
-  %td= appointment.id
   %td= appointment.date
+  %td= appointment.doctor.email
   %td
     - unless appointment.patient.present?
       = link_to "book", book_patients_appointment_path(appointment), method: 'patch', class: 'btn btn-success btn-sm'

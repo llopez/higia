@@ -1,0 +1,18 @@
+.row.mb-4
+  .col-md-12
+    .card
+      .card-header
+        Listado de turnos
+      .card-body
+        - if @appointments.any?
+          %table.table.table-small
+            %thead
+              %tr
+                %th Fecha
+                %th Doctor
+                %th 
+            %tbody
+              = render @appointments
+        - else
+          .alert.alert-success
+            no tienes turnos

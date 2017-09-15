@@ -1,0 +1,30 @@
+.row.mb-4
+  .col-md-12
+    .card
+      .card-header
+        Buscador de Turnos
+      .card-body
+        = form_tag patients_appointments_searcher_path, method: 'get' do
+          .form-group.row
+            = label_tag :doctor_id, "Doctor", class: 'label col-form-label col-md-2'
+            .col-md-10
+              = select_tag :doctor_id, options_from_collection_for_select(@doctors, "id", "email"), class: 'form-control', include_blank: true
+
+          .form-group
+            = submit_tag "Buscar", class: 'btn btn-primary'
+
+- if @appointments and @appointments.any?
+  .row.mb-4
+    .col-md-12
+      .card
+        .card-header
+          Turnos disponibles
+        .card-body
+          %table.table.table-small
+            %thead
+              %tr
+                %th Fecha
+                %th Doctor 
+                %th
+            %tbody
+              = render @appointments

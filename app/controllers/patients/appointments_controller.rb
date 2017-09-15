@@ -1,6 +1,10 @@
 class Patients::AppointmentsController < PatientsController
   before_action :authenticate_patient!
 
+  def index
+    @appointments = current_patient.appointments
+  end
+
   def book
     @appointment = Appointment.find params[:id]
     if @appointment.update_attribute(:patient, current_patient)
@@ -8,7 +12,7 @@ class Patients::AppointmentsController < PatientsController
     else
       flash[:alert] = "Appointment wasn't updated"
     end
-    redirect_to patients_doctor_path(@appointment.doctor)
+    redirect_to patients_appointments_path
   end
 
   def cancel
@@ -18,6 +22,6 @@ class Patients::AppointmentsController < PatientsController
     else
       flash[:alert] = "Appointment wasn't updated"
     end
-    redirect_to patients_doctor_path(@appointment.doctor)
+    redirect_to patients_appointments_path
   end
 end
