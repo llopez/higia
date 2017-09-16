@@ -1,7 +1,7 @@
 class Patients::RegistrationsController < Devise::RegistrationsController
   layout 'box', only: [:new, :create]
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -37,7 +37,18 @@ class Patients::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def update_resource(resource, params)
+    if params['password'].present? or params['password_confirmation'].present?
+      resource.update_with_password(params)
+    else
+      params.delete('current_password')
+      params.delete('password')
+      params.delete('password_confirmation')
+      resource.update_without_password(params)
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -45,12 +56,16 @@ class Patients::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :doc_type, :doc_number, :phone])
+  end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
+    edit_patient_registration_path
+  end
+
+  def after_update_path_for(resource)
     edit_patient_registration_path
   end
 

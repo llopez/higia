@@ -10,9 +10,11 @@
           - if current_user.instance_of?(Patient)
             = link_to "Mis Turnos", patients_appointments_path, class: 'dropdown-item'
             = link_to "Buscador de Turnos", patients_appointments_searcher_path, class: 'dropdown-item'
+          - else 
+            = link_to "Listado de Turnos", doctors_appointments_path, class: 'dropdown-item'
       %li.nav-item.dropdown
         %a.nav-link.dropdown-toggle(data-toggle="dropdown")
-          = current_user.email
+          = current_user.first_name
         .dropdown-menu
           - if current_user.instance_of?(Patient)
             = link_to "My Profile", edit_patient_registration_path, class: 'dropdown-item'
