@@ -2,23 +2,35 @@
   %a.navbar-brand
     %h2 Higia
   .collapse.navbar-collapse
+    %span.navbar-text
+      Sistema de turnos web
     %ul.navbar-nav.ml-auto
       %li.nav-item.dropdown
         %a.nav-link.dropdown-toggle(data-toggle="dropdown")
+          %span.oi.oi-calendar(aria-hidden="true")
           Turnos
         .dropdown-menu
           - if current_user.instance_of?(Patient)
-            = link_to "Mis Turnos", patients_appointments_path, class: 'dropdown-item'
-            = link_to "Buscador de Turnos", patients_appointments_searcher_path, class: 'dropdown-item'
+            = link_to patients_appointments_path, class: 'dropdown-item' do
+              %span.oi.oi-calendar(aria-hidden="true")
+              Mis Turnos
+            = link_to patients_appointments_searcher_path, class: 'dropdown-item' do
+              %span.oi.oi-magnifying-glass(aria-hidden="true")
+              Buscador de Turnos
           - else 
             = link_to "Listado de Turnos", doctors_appointments_path, class: 'dropdown-item'
       %li.nav-item.dropdown
         %a.nav-link.dropdown-toggle(data-toggle="dropdown")
+          %span.oi.oi-person(aria-hidden="true")
           = current_user.first_name
         .dropdown-menu
           - if current_user.instance_of?(Patient)
-            = link_to "My Profile", edit_patient_registration_path, class: 'dropdown-item'
+            = link_to edit_patient_registration_path, class: 'dropdown-item' do
+              %span.oi.oi-pencil(aria-hidden="true")
+              Perfil
           - else
             = link_to "My Profile", edit_doctor_registration_path, class: 'dropdown-item'
-          .dropdown-divider  
-          = link_to "Sign Out", destroy_user_session_path, method: 'delete', class: 'dropdown-item'
+          .dropdown-divider 
+          = link_to destroy_user_session_path, method: 'delete', class: 'dropdown-item' do 
+            %span.oi.oi-account-logout(aria-hidden="true")
+            Salir

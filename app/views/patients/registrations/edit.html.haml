@@ -1,8 +1,9 @@
 .row.mb-4
-  .col-md-12
+  .col-md-6.mb-4
     .card
       .card-header
-        Información de Cuenta
+        %span.oi.oi-lock-locked(aria-hidden="true")
+        Datos de Cuenta
       .card-body
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
           - if resource.errors.any?
@@ -37,13 +38,13 @@
               = f.label :current_password, class: 'label col-form-label'
               = f.password_field :current_password, autocomplete: "off", class: 'form-control'
           .form-group
-            = f.submit "Update", class: 'btn btn-primary'
-            = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'float-right'
-.row.mb-4
-  .col-md-12
+            = f.submit "Guardar", class: 'btn btn-primary btn-sm'
+            = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-sm float-right'
+  .col-md-6
     .card
       .card-header
-        Información Personal
+        %span.oi.oi-person(aria-hidden="true")
+        Datos Personales
       .card-body
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
           - if (resource.errors.keys & [:first_name, :last_name, :doc_type, :doc_number, :phone]).any?
@@ -76,4 +77,4 @@
               = f.label :phone, class: 'label col-form-label'
               = f.phone_field :phone, autocomplete: "off", class: 'form-control'
           .form-group
-            = f.submit "Update", class: 'btn btn-primary'
+            = f.submit "Guardar", class: 'btn btn-primary btn-sm'
