@@ -2,14 +2,14 @@
   .col-md-12
     .card
       .card-header
-        Listado de turnos
+        Listado de Turnos
       .card-body
         - if @appointments.any?
           %table.table.table-small
             %thead
               %tr
-                %th Fecha
-                %th Doctor
+                %th= Appointment.human_attribute_name :date
+                %th= Appointment.human_attribute_name :doctor
                 %th 
             %tbody
               = render @appointments

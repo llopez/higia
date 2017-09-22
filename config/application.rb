@@ -16,5 +16,6 @@ module Higia
     # -- all .rb files in that directory are automatically loaded.
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.i18n.default_locale = :es
   end
 end

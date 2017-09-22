@@ -1,0 +1,44 @@
+es:
+  # Attributes names common to most models
+  attributes:
+    created_at: "Creado en"
+    updated_at: "Actualizado en"
+
+  # Default error messages
+  errors:
+    messages:
+      required: "debe existir"
+      taken: "ya ha sido tomado"
+
+  # Active Record models configuration
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "La validación has fallado: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Cannot delete record because a dependent %{record} exists"
+          has_many: "Cannot delete record because dependent %{record} exist"
+        # Append your own errors here or at the model/attributes scope.
+
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      #   models:
+      #     user:
+      #       blank: "This is a custom blank message for %{model}: %{attribute}"
+      #       attributes:
+      #         login:
+      #           blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and
+      # custom blank validation message for login attribute of User model.
+      #models:
+
+    # Translate model names. Used in Model.human_name().
+    models:
+      appointment: 'Turno'
+
+    attributes:
+      appointment:
+        date: 'Fecha'
+        doctor: 'Doctor'

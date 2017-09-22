@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-md.mb-4
-  %a.navbar-brand
+  %a.navbar-brand(href="/")
     %h2 Higia
   .collapse.navbar-collapse
     %span.navbar-text
@@ -29,7 +29,9 @@
               %span.oi.oi-pencil(aria-hidden="true")
               Perfil
           - else
-            = link_to "My Profile", edit_doctor_registration_path, class: 'dropdown-item'
+            = link_to edit_doctor_registration_path, class: 'dropdown-item' do
+              %span.oi.oi-pencil(aria-hidden="true")
+              Perfil
           .dropdown-divider 
           = link_to destroy_user_session_path, method: 'delete', class: 'dropdown-item' do 
             %span.oi.oi-account-logout(aria-hidden="true")

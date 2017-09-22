@@ -15,6 +15,7 @@
                   %li.list-group-item
                     = "#{field} #{error}"
       .form-group
+        = f.label :data, class: 'label'
         = f.datetime_field :date, autofocus: true, class: 'form-control'
       .form-group
-        = f.submit "Create Appointment", class: 'btn btn-primary'
+        = f.submit class: 'btn btn-primary'
